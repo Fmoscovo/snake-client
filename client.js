@@ -36,6 +36,25 @@ const connect = function () {
       case "d":
         conn.write("Move: right");
         break;
+      case "1":
+        conn.write("Say: Chomp! Chomp!");
+        break;
+      case "2":
+        conn.write("Say: I'm a sneaky snake!");
+        break;
+      case "3":
+        conn.write("Say: Hiss! Hiss!");
+        break;
+      case "4":
+        conn.write("Say: Cohort 26 rocks!");
+        break;
+      case "5":
+        conn.write("Say: MOVE! ");
+        break;
+      case "6":
+        conn.write("Say: Hi friend!");
+        break;
+      // Add more cases for other keys and messages
       default:
         break;
     }
