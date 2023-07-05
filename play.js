@@ -1,9 +1,26 @@
 const { connect } = require("./client");
 
 console.log("Connecting ...");
-connect();
+const conn = connect();
 
-// //Instruction
-// Print a message to the screen when the connection is successfully established.
+// setup interface to handle user input from stdin
+const setupInput = function () {
+  const stdin = process.stdin;
+  stdin.setRawMode(true);
+  stdin.setEncoding("utf8");
+  stdin.resume();
 
-// To accomplish this, inside the connect function, use the .on method on our conn object to register a "connect" handler (a callback function). In the callback, print a message for us (the player) to see - something like "Successfully connected to game server" will suffice.
+  stdin.on("data", handleUserInput);
+
+  return stdin;
+};
+
+// handle user input from stdin
+const handleUserInput = function (key) {
+  if (key === "\u0003") {
+    process.exit();
+  }
+};
+
+// Call the setupInput function to start listening for user input
+const input = setupInput();
