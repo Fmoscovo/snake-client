@@ -1,8 +1,7 @@
 const { connect } = require("./client");
-const { setupInput, startGameLoop, stopGameLoop } = require("./input");
+const { setupInput } = require("./input");
 
-console.log("Connecting...");
+console.log("Connecting ...");
 const conn = connect();
 
 setupInput(conn);
-startGameLoop(conn);
