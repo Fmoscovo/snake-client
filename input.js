@@ -1,4 +1,5 @@
 let connection;
+let intervalId;
 
 const setupInput = (conn) => {
   connection = conn;
@@ -15,24 +16,24 @@ const setupInput = (conn) => {
 
 const handleUserInput = function (data) {
   if (data === "\u0003") {
+    stopGameLoop();
     process.exit();
-  }
-
-  if (data === "w") {
-    connection.write("Move: up");
-  }
-
-  if (data === "a") {
-    connection.write("Move: left");
-  }
-
-  if (data === "s") {
-    connection.write("Move: down");
-  }
-
-  if (data === "d") {
-    connection.write("Move: right");
   }
 };
 
-module.exports = { setupInput };
+const startGameLoop = (conn) => {
+  intervalId = setInterval(() => {}, 200);
+
+  console.log("Game loop started");
+};
+
+const stopGameLoop = () => {
+  clearInterval(intervalId);
+  console.log("Game loop stopped");
+};
+
+module.exports = {
+  setupInput,
+  startGameLoop,
+  stopGameLoop,
+};
